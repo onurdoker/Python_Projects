@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do Applications</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+
+    <h1>The TO-DO List</h1>
+
+    <form class="add-form" action="{{ url_for('add_task') }}" method="POST">
+        <input type="text" name="title" placeholder="Please enter task title..." required>
+        <textarea name="description" placeholder="Please enter description (optional)"></textarea>
+        <input type="date" name="due_date">
+        <button type="submit">Add Task</button>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul>
+        {% for category, message in messages %}
+        <li class="alert alert-{{ category }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    {% if tasks %}
+
+    <ul class="task-list">
+        {% for task in tasks %}
+
+        <li class="task-item {{'complete' if task.status else '' }}">
+
+            <div class="task-details">
+                <span class="title">{{ task.title }}</span>
+                <p class="description">{{ task.description or 'No description provided!' }}</p>
+                <p class="due_date">Due: {{ task.due_date.strftime('%Y-%m-%d') if task.due_date else 'No due date'
+                    }}</p>
+            </div>
+
+            <div class="task-actions">
+                <form action="{{ url_for('update_task', task_id=task.id) }} " method="POST" style="display: inline">
+                    <button type="submit" class="update-btn">{{ 'Undo' if task.status else 'Complete' }}</button>
+                </form>
+
+                <form action="{{ url_for('delete_task', task_id=task.id) }} " method="POST" style="display: inline">
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            </div>
+
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+    {% else %}
+
+    <p>No tasks available. Add a new task to get started!</p>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
