@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Shortener</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+<div class="container">
+    <main class="main-content">
+        <h1>URL Shortener</h1>
+        <form method="post" action="/">
+            <label for="original_url">Enter URL: </label>
+            <input type="text" id="original_url" name="original_url" placeholder="https://yourlongurl.com" required>
+            <button type="submit">Shorten</button>
+        </form>
+
+        {% if shortened_url %}
+        <div class="result">
+            <p>
+                Shortened URL:
+                <a href="{{ shortened_url }}" target="_blank">{{ shortened_url }}</a>
+            </p>
+        </div>
+
+        {% endif %}
+
+    </main>
+
+</div>
+
+</body>
+</html>
