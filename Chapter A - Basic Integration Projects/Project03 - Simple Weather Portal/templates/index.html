@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<header>
+    <h1 class="main-title">
+        Weather Portal Application
+    </h1>
+</header>
+
+{% if error %}
+
+<div class="error-message">
+    {{ error }}
+</div>
+
+{% else %}
+
+{% if city %}
+
+<section class="weather-info">
+    <h2>{{ city.capitalize() }}'s Weather</h2>
+    <p>Temperature: {{ temperature }}</p>
+    <p>Weather Description: {{ weather_description }}</p>
+</section>
+
+<form method="POST" class="search-form">
+    <input type="text" name="city" placeholder="Please enter city name..." required>
+    <button type="submit">Search</button>
+</form>
+
+{% else %}
+
+<form method="POST" class="search-form">
+    <input type="text" name="city" placeholder="Please enter city name..." required>
+    <button type="submit">Search</button>
+</form>
+
+{% endif %}
+
+{% endif %}
+
+</body>
+</html>

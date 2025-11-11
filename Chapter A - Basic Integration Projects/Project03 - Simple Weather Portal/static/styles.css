@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #F4F4F9;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+}
+
+.main-title {
+    margin: 0;
+    padding-bottom: 1rem;
+}
+
+.error-message {
+    color: #DC3545;
+    font-size: 1.2rem;
+    padding: 1rem;
+    background-color: #F8D7DA;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: #F8D7DA;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-form button {
+    cursor: pointer;
+    padding: 0.5rem;
+    background-color: #4CAF50;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+}
+
+.weather-info {
+    text-align: center;
+    padding: 1rem;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
