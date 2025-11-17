@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Headlines</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+    <header class='header'>
+        <div class="header-content">
+            <h1>
+                NewsHUB
+            </h1>
+            <p class="tagline">Real-time news from around the world</p>
+        </div>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-label">Total Articles</span>
+            <span class="stat-value" id="article-count">0</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Last Updated</span>
+            <span class="stat-value" id="last-updated">--:--</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Status</span>
+            <span class="stat-value status-badge" id="status">
+                    <span class="status-dot"></span>
+                    Ready
+                </span>
+        </div>
+    </div>
+
+    <div class="control-panel">
+        <button class="btn btn-primary" id="fetch-btn">
+            Fetch Latest News
+        </button>
+
+        <button class="btn btn-secondary" id="clear-btn">
+            Clear
+        </button>
+    </div>
+
+    <div class="news-grid" id="news-grid">
+
+    </div>
+
+    <div class="empty-state" id="empty-state">
+        <h2>No News Yet</h2>
+        <p>Click "Fetch Latest News" to load the latest headlines</p>
+    </div>
+
+    <div class="loader" id="loader" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading news...</p>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
